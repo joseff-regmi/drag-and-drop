@@ -1,7 +1,8 @@
 import { getColor } from "../../utils/getColor"
 import { Draggable, Droppable } from "react-beautiful-dnd"
+import { testDataType } from "../../../data/testData"
 
-export const ContentMenu = ({ testData }: any) => {
+export const ContentMenu = ({ testData }: { testData: testDataType[] }) => {
 	return (
 		<>
 			<Droppable droppableId='items'>
@@ -11,7 +12,7 @@ export const ContentMenu = ({ testData }: any) => {
 						{...provided.droppableProps}
 						ref={provided.innerRef}
 					>
-						{testData.map((data: any, index: number) => {
+						{testData.map((data: testDataType, index: number) => {
 							const { id, title, text, color } = data
 							return (
 								<Draggable draggableId={id} key={id} index={index}>
@@ -26,7 +27,9 @@ export const ContentMenu = ({ testData }: any) => {
 										>
 											<span>{index + 1}.</span>
 											<span>{title}</span>
-											<div>{text}</div>
+											<div className='w-full text-2xl h-full flex items-center justify-center pb-5'>
+												{text}
+											</div>
 										</div>
 									)}
 								</Draggable>

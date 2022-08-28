@@ -1,10 +1,11 @@
 import { getColor } from "../../utils/getColor"
+import { testDataType } from "../../../data/testData"
 
-export const ContentDisplay = ({ testData }: any) => {
+export const ContentDisplay = ({ testData }: { testData: testDataType[] }) => {
 	return (
 		<>
 			<div className='h-full overflow-scroll w-full p-5 no-scrollbar'>
-				{testData.map((data: any, index: number) => {
+				{testData.map((data: testDataType, index: number) => {
 					const { id, title, text, color } = data
 					return (
 						<div
@@ -15,7 +16,7 @@ export const ContentDisplay = ({ testData }: any) => {
 						>
 							<span>{index + 1}.</span>
 							<span>{title}</span>
-							<div className='flex text-4xl w-full h-full items-center justify-center'>
+							<div className='flex text-6xl w-full h-full items-center justify-center'>
 								{text}
 							</div>
 						</div>

@@ -11,16 +11,13 @@ export const Main = () => {
 			return
 		}
 		const newIndexes = Array.from(indexes)
-		console.log(newIndexes, "newIndexesssssss")
 		const [indexRecords] = newIndexes.splice(results.source.index, 1)
-		console.log(indexRecords, "index recordessssssss")
 		newIndexes.splice(results.destination.index, 0, indexRecords)
-
 		setIndexes(newIndexes)
 	}
 	return (
 		<>
-			<div className='container w-full h-screen p-5 bg-gray-100'>
+			<div className='container mx-auto w-full h-screen p-5 bg-gray-100'>
 				<div className='flex h-full w-full'>
 					<DragDropContext onDragEnd={onDropEndHandler}>
 						<div className='flex grow shadow-xl rounded-md bg-white'>
