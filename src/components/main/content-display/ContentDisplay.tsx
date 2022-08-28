@@ -5,17 +5,18 @@ export const ContentDisplay = ({ testData }: any) => {
 		<>
 			<div className='h-full overflow-scroll w-full p-5 no-scrollbar'>
 				{testData.map((data: any, index: number) => {
+					const { id, title, text, color } = data
 					return (
 						<div
-							key={data.id}
+							key={id}
 							className={`shadow-lg ${getColor(
-								data.color,
+								color,
 							)} h-98 border-2 border-px solid mt-5 rounded-md p-5`}
 						>
-							<span>{data.id}.</span>
-							<span>{data.title}</span>
+							<span>{index + 1}.</span>
+							<span>{title}</span>
 							<div className='flex text-4xl w-full h-full items-center justify-center'>
-								{data.text}
+								{text}
 							</div>
 						</div>
 					)
