@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { ContentDisplay } from "./content-display"
 import { ContentMenu } from "./content-menu"
-import { testData } from "../../data/testData"
+import { testData as data } from "../../data/testData"
 import { DragDropContext } from "react-beautiful-dnd"
 
 export const Main = () => {
-	const [indexes, setIndexes] = useState(testData)
+	const [indexes, setIndexes] = useState(data)
 	const onDropEndHandler = (results: any) => {
 		if (!results.destination) {
 			return
@@ -21,10 +21,10 @@ export const Main = () => {
 				<div className='flex h-full w-full'>
 					<DragDropContext onDragEnd={onDropEndHandler}>
 						<div className='flex grow shadow-xl rounded-md bg-white'>
-							<ContentMenu testData={indexes} />
+							<ContentMenu data={indexes} />
 						</div>
 						<div className='flex ml-10 shadow-xl w-3/4 rounded-md bg-white'>
-							<ContentDisplay testData={indexes} />
+							<ContentDisplay data={indexes} />
 						</div>
 					</DragDropContext>
 				</div>

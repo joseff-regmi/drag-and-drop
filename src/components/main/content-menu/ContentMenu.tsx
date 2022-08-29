@@ -1,8 +1,8 @@
-import { getColor } from "../../utils/getColor"
-import { Draggable, Droppable } from "react-beautiful-dnd"
-import { testDataType } from "../../../data/testData"
+import { Droppable } from "react-beautiful-dnd"
+import { dataType } from "../../../data/testData"
+import { DraggableContent } from "./draggable-content"
 
-export const ContentMenu = ({ testData }: { testData: testDataType[] }) => {
+export const ContentMenu = ({ data }: { data: dataType[] }) => {
 	return (
 		<>
 			<Droppable droppableId='items'>
@@ -12,27 +12,17 @@ export const ContentMenu = ({ testData }: { testData: testDataType[] }) => {
 						{...provided.droppableProps}
 						ref={provided.innerRef}
 					>
-						{testData.map((data: testDataType, index: number) => {
-							const { id, title, text, color } = data
+						{data.map((datum: dataType, index: number) => {
+							const { id, title, text, color } = datum
 							return (
-								<Draggable draggableId={id} key={id} index={index}>
-									{(dragged) => (
-										<div
-											{...dragged.draggableProps}
-											{...dragged.dragHandleProps}
-											ref={dragged.innerRef}
-											className={`p-2 ${getColor(
-												color,
-											)} h-52 rounded-md mt-9 border border-solid border-gray-200 shadow-xl`}
-										>
-											<span>{index + 1}.</span>
-											<span>{title}</span>
-											<div className='w-full text-2xl h-full flex items-center justify-center pb-5'>
-												{text}
-											</div>
-										</div>
-									)}
-								</Draggable>
+								<DraggableContent
+									key={id}
+									index={index}
+									id={id}
+									title={title}
+									text={text}
+									color={color}
+								/>
 							)
 						})}
 						{provided.placeholder}

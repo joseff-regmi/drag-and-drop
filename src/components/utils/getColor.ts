@@ -2,7 +2,9 @@
 // 	return `bg-${color}-200`
 // }
 
-export const getColor = (color: string) => {
+type color = "pink" | "blue" | "green" | "red"
+
+export const getColor = (color: color) => {
 	if (color === "pink") {
 		return "bg-pink-200"
 	} else if (color === "blue") {
@@ -11,5 +13,5 @@ export const getColor = (color: string) => {
 		return "bg-green-200"
 	} else if (color === "red") {
 		return "bg-red-200"
-	}
+	} else return ""
 }
